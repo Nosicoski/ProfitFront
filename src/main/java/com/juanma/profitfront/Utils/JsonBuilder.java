@@ -1,15 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.juanma.profitfront.Utils;
 
+import com.juanma.profitfront.Models.RegisterRequest;
 
 public class JsonBuilder {
+    
     public static String buildLoginJson(String nombreUsuario, String password) {
         return "{"
                 + "\"nombreUsuario\":\"" + escapeJson(nombreUsuario) + "\","
                 + "\"password\":\"" + escapeJson(password) + "\""
+                + "}";
+    }
+    
+    public static String buildRegisterJson(RegisterRequest request) {
+        return "{"
+                + "\"nombreUsuario\":\"" + escapeJson(request.getNombreUsuario()) + "\","
+                + "\"password\":\"" + escapeJson(request.getPassword()) + "\","
+                + "\"nombre\":\"" + escapeJson(request.getNombre()) + "\","
+                + "\"apellido\":\"" + escapeJson(request.getApellido()) + "\","
+                + "\"rol\": {"
+                + "\"id\": " + request.getRol().getId() + ","
+                + "\"nombre\": \"" + escapeJson(request.getRol().getNombre()) + "\""
+                + "}"
                 + "}";
     }
     

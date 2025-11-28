@@ -257,62 +257,63 @@ public class FrmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jcheckboxRecordarMiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcheckboxRecordarMiUsuarioActionPerformed
-      
+
     }//GEN-LAST:event_jcheckboxRecordarMiUsuarioActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-    String usuario = txtUsuario.getText().trim();
-    String password = new String(txtContraseña.getPassword()).trim();
+        String usuario = txtUsuario.getText().trim();
+        String password = new String(txtContraseña.getPassword()).trim();
 
-    if (usuario.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Complete todos los campos.");
-        return;
-    }
-
-    try {
-        // Usar JsonBuilder para crear el JSON correcto con "password"
-        String jsonBody = JsonBuilder.buildLoginJson(usuario, password);
-        
-        System.out.println("JSON ENVIADO: " + jsonBody);
-
-        // Llamada a la API - nota: el endpoint ahora es /api/auth/login
-        String respuesta = ApiClient.post("/api/auth/login", jsonBody);
-
-        if (respuesta == null) {
-            JOptionPane.showMessageDialog(this, "Credenciales incorrectas o servidor caído.");
+        if (usuario.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos.");
             return;
         }
 
-        Gson gson = new Gson();
-        LoginResponse loginResponse = gson.fromJson(respuesta, LoginResponse.class);
+        try {
+            // Usar JsonBuilder para crear el JSON correcto con "password"
+            String jsonBody = JsonBuilder.buildLoginJson(usuario, password);
 
-        if (loginResponse.getToken() != null && !loginResponse.getToken().isEmpty()) {
-            // Guardar sesión
-            SessionManager.login(loginResponse.getToken(), loginResponse.getUsuario());
-            
-            JOptionPane.showMessageDialog(this, 
-                "¡Bienvenido " + loginResponse.getUsuario().getNombre() + " " + 
-                loginResponse.getUsuario().getApellido() + "!");
+            System.out.println("JSON ENVIADO: " + jsonBody);
 
-            // Abrir formulario principal
-            FrmPrincipal frm = new FrmPrincipal();
-            frm.setVisible(true);
+            // Llamada a la API - nota: el endpoint ahora es /api/auth/login
+            String respuesta = ApiClient.post("/api/auth/login", jsonBody);
 
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, 
-                "Error en el login: " + 
-                (loginResponse.getMensaje() != null ? loginResponse.getMensaje() : "Credenciales incorrectas"));
+            if (respuesta == null) {
+                JOptionPane.showMessageDialog(this, "Credenciales incorrectas o servidor caído.");
+                return;
+            }
+
+            Gson gson = new Gson();
+            LoginResponse loginResponse = gson.fromJson(respuesta, LoginResponse.class);
+
+            if (loginResponse.getToken() != null && !loginResponse.getToken().isEmpty()) {
+                // Guardar sesión
+                SessionManager.login(loginResponse.getToken(), loginResponse.getUsuario());
+
+                JOptionPane.showMessageDialog(this,
+                        "¡Bienvenido " + loginResponse.getUsuario().getNombre() + " "
+                        + loginResponse.getUsuario().getApellido() + "!");
+
+                // Abrir formulario principal
+                FrmPrincipal frm = new FrmPrincipal();
+                frm.setVisible(true);
+
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Error en el login: "
+                        + (loginResponse.getMensaje() != null ? loginResponse.getMensaje() : "Credenciales incorrectas"));
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al conectar con el servidor: " + ex.getMessage());
         }
-
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(this, "Error al conectar con el servidor: " + ex.getMessage());
-    }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearUsuarioActionPerformed
-
+        FrmCrearCuenta frmC = new FrmCrearCuenta();
+        frmC.setVisible(true);
     }//GEN-LAST:event_btnCrearUsuarioActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
