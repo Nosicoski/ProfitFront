@@ -1,0 +1,15 @@
+com\juanma\profitfront\FrmLogin.class
+com\juanma\profitfront\Utils\JsonBuilder.class
+com\juanma\profitfront\FrmLogin$3.class
+com\juanma\profitfront\Models\LoginResponse.class
+com\juanma\profitfront\FrmLogin$6.class
+com\juanma\profitfront\Services\ApiClient.class
+com\juanma\profitfront\FrmLogin$5.class
+com\juanma\profitfront\FrmPrincipal$1.class
+com\juanma\profitfront\Services\SessionManager.class
+com\juanma\profitfront\FrmLogin$4.class
+com\juanma\profitfront\Models\LoginResponse$UsuarioResponse.class
+com\juanma\profitfront\FrmLogin$1.class
+com\juanma\profitfront\ProfitFront.class
+com\juanma\profitfront\FrmPrincipal.class
+com\juanma\profitfront\FrmLogin$2.class
