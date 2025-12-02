@@ -5,7 +5,7 @@
 package com.juanma.profitfront.Services;
 
 
-import com.juanma.profitfront.Models.LoginResponse;
+import com.juanma.profitfront.Models.response.LoginResponse;
 
 public class SessionManager {
     private static String authToken;

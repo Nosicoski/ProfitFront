@@ -1,6 +1,6 @@
 package com.juanma.profitfront.Utils;
 
-import com.juanma.profitfront.Models.RegisterRequest;
+import com.juanma.profitfront.Models.request.RegisterRequest;
 
 public class JsonBuilder {
     

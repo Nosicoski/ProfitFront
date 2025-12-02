@@ -14,7 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
-        <exec.mainClass>com.juanma.profitfront.FrmLogin</exec.mainClass>
+      <mainClass>com.juanma.profitfront.interfaz.FrmLogin</mainClass>
+
     </properties>
 
     <dependencies>
@@ -51,7 +52,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>${exec.mainClass}</mainClass>
+                 <mainClass>com.juanma.profitfront.interfaz.FrmLogin</mainClass>
                 </configuration>
             </plugin>
 
